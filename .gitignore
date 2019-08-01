@@ -77,7 +77,6 @@ bld/
 
 #GPAC specific 
 config.h
-include/gpac/revision.h
 include/gpac/revision.h.new
 extra_lib/lib/
 extra_lib/include/SDL/
