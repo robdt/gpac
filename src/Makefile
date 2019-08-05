@@ -60,14 +60,12 @@ GPAC_OBJS_IN_OBJ_DIR = $(foreach GPAC_OBJS, $(GPAC_OBJS), ../obj/$(GPAC_OBJS))
 
 ifeq ($(UNAME), Linux)
 C_FLAGS = -Wpedantic -Wno-deprecated-declarations -Wall -fno-strict-aliasing -fPIC -DPIC  -DGPAC_CONFIG_LINUX -DGPAC_DISABLE_3D -DGPAC_64_BITS
-SO_FLAGS = -shared -W -L/usr/local/lib -lavformat -lavcodec -lavutil -luuid
-LD_FLAGS = -L/usr/local/lib -luuid -lm -lz
-LD_FLAGS_FFMPEG = -lavformat -lavcodec -lavutil
+SO_FLAGS = -shared -W -L/usr/local/lib
+LD_FLAGS = -L/usr/local/lib -lm -lz
 else
 C_FLAGS = -Wpedantic -Wno-deprecated-declarations -DGPAC_CONFIG_DARWIN -D_FILE_OFFSET_BITS=64 -DVERSION_FILE_PRESENT -Dfopen64=fopen -Dopen64=open -Dlseek64=lseek
-SO_FLAGS = -dynamiclib -undefined suppress -flat_namespace -L/usr/local/lib -lavformat -lavcodec -lavutil
-LD_FLAGS = -L/usr/local/lib -L/Users/rtaylo231/robt/vx-caption-inspector/src -lz
-LD_FLAGS_FFMPEG = -lavformat -lavcodec -lavutil
+SO_FLAGS = -dynamiclib -undefined suppress -flat_namespace -L/usr/local/lib
+LD_FLAGS = -L/usr/local/lib -lz
 endif
 
 -include ../obj/$(GPAC_OBJS:.o=.d)
@@ -75,7 +73,7 @@ endif
 all: gpac
 
 gpac: $(GPAC_OBJS_WITH_PATH)
-	gcc $(SO_FLAGS) -o ../${GPACLIB_NAME} $(GPAC_OBJS_IN_OBJ_DIR)
+	clang $(SO_FLAGS) -o ../${GPACLIB_NAME} $(GPAC_OBJS_IN_OBJ_DIR)
 
 clean:
 	@echo "*** Cleaning Target Files. ***"
@@ -89,5 +87,5 @@ clean:
 
 %.o: %.c
 	@if ! [ -d "../obj" ]; then mkdir ../obj; fi
-	gcc -c $(C_FLAGS) -I ../include $*.c -o ../obj/$(notdir $*.o)
-	gcc -MM $(C_FLAGS) -I ../include $*.c > ../obj/$(notdir $*.d)
+	clang -c $(C_FLAGS) -I ../include $*.c -o ../obj/$(notdir $*.o)
+	clang -MM $(C_FLAGS) -I ../include $*.c > ../obj/$(notdir $*.d)

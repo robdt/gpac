@@ -468,6 +468,7 @@ GF_Err gf_isom_set_meta_xml_memory(GF_ISOFile *file, Bool root_meta, u32 track_n
 	return GF_OK;
 }
 
+#if 0
 static void meta_add_item_property_association(GF_ItemPropertyAssociationBox *ipma, u32 item_ID, u32 prop_index, Bool essential) {
 	u32 i, count;
 	GF_ItemPropertyAssociationEntry *found_entry = NULL;
@@ -496,6 +497,7 @@ static void meta_add_item_property_association(GF_ItemPropertyAssociationBox *ip
 	gf_list_add(found_entry->essential, ess);
 	gf_list_add(found_entry->property_index, index);
 }
+#endif
 
 GF_EXPORT
 GF_Err gf_isom_meta_get_next_item_id(GF_ISOFile *file, Bool root_meta, u32 track_num, u32 *item_id)
