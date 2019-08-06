@@ -4,7 +4,7 @@
 #                                                                              #
 ################################################################################
 
-GPACLIB_NAME = libgpac.dylib
+GPACLIB_NAME = libgpac.so
 
 UNAME := $(shell uname)
 
@@ -75,9 +75,15 @@ all: gpac
 gpac: $(GPAC_OBJS_WITH_PATH)
 	clang $(SO_FLAGS) -o ../${GPACLIB_NAME} $(GPAC_OBJS_IN_OBJ_DIR)
 
+install: gpac
+	cp ../${GPACLIB_NAME} /usr/local/lib/${GPACLIB_NAME}
+	cp -r ../include/gpac /usr/local/include
+
 clean:
 	@echo "*** Cleaning Target Files. ***"
 	rm -f ../$(GPACLIB_NAME)
+	rm -f /usr/local/lib/$(GPACLIB_NAME)
+	rm -rf /usr/local/include/gpac
 	@echo "\n*** Cleaning Object Files. ***"
 	for i in $(OBJS) ; do ( rm -f ../obj/$$i ) ; done
 	rm -f ../obj/main.o
