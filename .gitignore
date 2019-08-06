@@ -87,3 +87,4 @@ gpac.pc
 tests/external_media/
 tests/results/
 
+.idea/
