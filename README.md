@@ -1,7 +1,7 @@
 GPAC
 ====
 
-GPAC is a multimedia framework oriented towards rich media and distributed under the LGPL license (see [COPYING][COPYING]).
+GPAC is a multimedia framework oriented towards rich media and distributed under the LGPL license (see COPYING).
 
 GPAC supports many multimedia formats, from simple audiovisual containers (avi, mov, mpg) to complex
 presentation formats (MPEG-4 Systems, SVG Tiny 1.2, VRML/X3D) and 360 videos. GPAC supports presentation scripting for MPEG4/VRML/X3D through mozilla SpiderMonkey javascript engine.
@@ -10,13 +10,13 @@ GPAC currently supports local playback, http progressive download, Adaptive HTTP
 
 GPAC also features MP4Box, a multimedia swiss-army knife for the prompt, and MP42TS, a fast TS multiplexer from MP4 and RTP sources.
 
-For more information, visit the GPAC website: [http://gpac.io][http://gpac.io]
+For more information, visit the GPAC website: http://gpac.io
 
 This Fork of GPAC
 -----------------
 This fork of GPAC creates a purpose built shared library that can be leveraged to strip closed captions from Quicktime MOV Assets.
 
-To download and use the officially supported version of GPAC please visit the official Github Page: [https://github.com/gpac/gpac][https://github.com/gpac/gpac]
+To download and use the officially supported version of GPAC please visit the official Github Page: https://github.com/gpac/gpac
 
 Building the GPAC Shared Library
 --------------------------------
